@@ -61,12 +61,12 @@ func _set_positon_and_animation_state(state,_velocity):
 	$Character/AnimationPlayer.play(state)	
 
 func _input(event):
-	if event.is_action("right_click") and event.pressed:
+	if is_multiplayer_authority() && event.is_action("right_click") and event.pressed:
 		shoot_ball()	
 		if get_right_click_position().has("position"):
 			marker = get_right_click_position()["position"]			
 	
-#JUST FOR TEST
+#ONLY FOR TEST POSITION OF MOUSE
 func shoot_ball(): 
 	var raycast_result = get_right_click_position()
 	if !raycast_result.is_empty():
