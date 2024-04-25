@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://x1u1y5ljcm1"]
 
-[ext_resource type="Script" path="res://multiplayer_ui.gd" id="1_2gibx"]
+[ext_resource type="Script" path="res://ui/multiplayer_ui.gd" id="1_2gibx"]
 
 [sub_resource type="Theme" id="Theme_bnctc"]
 

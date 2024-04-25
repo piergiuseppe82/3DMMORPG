@@ -10,7 +10,7 @@ const Z_DELTA_TO_TARGET = 0.05
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var ball_scene = preload("res://Ball.tscn")
+var ball_scene = preload("res://test_utility/Ball.tscn")
 
 var marker
 

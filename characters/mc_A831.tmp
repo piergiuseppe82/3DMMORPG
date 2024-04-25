@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqedqwchhy0bd"]
 
-[ext_resource type="Script" path="res://mc_player.gd" id="1_gunyh"]
-[ext_resource type="PackedScene" uid="uid://cd3p6n6ddbxds" path="res://assets/characters/CharacterYBotBase/CharacterYBotBase.glb" id="2_vdnqv"]
+[ext_resource type="Script" path="res://characters/mc_player.gd" id="1_18ulx"]
+[ext_resource type="PackedScene" uid="uid://cd3p6n6ddbxds" path="res://assets/characters/CharacterYBotBase/CharacterYBotBase.glb" id="2_dj2sq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_02ddt"]
 radius = 0.21477
@@ -16,7 +16,7 @@ properties/1/spawn = true
 properties/1/replication_mode = 1
 
 [node name="MCPlayer" type="CharacterBody3D"]
-script = ExtResource("1_gunyh")
+script = ExtResource("1_18ulx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.855984, 0)
@@ -27,7 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 0.576432, 0.817145, 0, -0.817145, 0.576432, 
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 
-[node name="Character" parent="." instance=ExtResource("2_vdnqv")]
+[node name="Character" parent="." instance=ExtResource("2_dj2sq")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

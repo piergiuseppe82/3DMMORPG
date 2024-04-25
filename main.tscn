@@ -1,12 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://2aqp6djosngw"]
+[gd_scene load_steps=4 format=3 uid="uid://2aqp6djosngw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_oy6uy"]
-[ext_resource type="PackedScene" uid="uid://x1u1y5ljcm1" path="res://multiplayer_ui.tscn" id="2_6bkqc"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7bw1q"]
-size = Vector3(11.8027, 0.787354, 36.2383)
-
-[sub_resource type="BoxMesh" id="BoxMesh_w1agi"]
+[ext_resource type="PackedScene" uid="uid://x1u1y5ljcm1" path="res://ui/multiplayer_ui.tscn" id="2_6bkqc"]
+[ext_resource type="PackedScene" uid="uid://nyfbywp5445u" path="res://world/world.tscn" id="3_bdk0q"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_oy6uy")
@@ -14,23 +10,9 @@ script = ExtResource("1_oy6uy")
 [node name="MultiplayerUI" parent="." instance=ExtResource("2_6bkqc")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://mc_player.tscn")
+_spawnable_scenes = PackedStringArray("res://world/world.tscn", "res://characters/mc_player.tscn")
 spawn_path = NodePath("..")
 
-[node name="World" type="Node3D" parent="."]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="World"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.564956, -0.393597, 10.1557)
-shape = SubResource("BoxShape3D_7bw1q")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/StaticBody3D/CollisionShape3D"]
-transform = Transform3D(8.83992, 0, 0, 0, -0.757753, 0, 0, 0, 35.7117, 0.00562, 0.0136483, -0.0043354)
-mesh = SubResource("BoxMesh_w1agi")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
-transform = Transform3D(0.986527, 0.113575, -0.117754, 0, 0.719764, 0.694219, 0.163601, -0.684865, 0.710066, -1.15796, 4.11384, 5.19387)
-shadow_enabled = true
+[node name="World" parent="." instance=ExtResource("3_bdk0q")]
 
 [connection signal="connected" from="MultiplayerUI" to="." method="_on_multiplayer_ui_connected"]
