@@ -35,10 +35,6 @@ func _physics_process(delta):
 		$SpringArm3D/Camera3D.make_current()
 		if not is_on_floor():
 			velocity.y -= gravity * delta
-
-		
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
 		var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
@@ -62,7 +58,7 @@ func _set_positon_and_animation_state(state,_velocity):
 
 func _input(event):
 	if is_multiplayer_authority() && event.is_action("right_click") and event.pressed:
-		shoot_ball()	
+		#shoot_ball()	
 		if get_right_click_position().has("position"):
 			marker = get_right_click_position()["position"]			
 	
@@ -95,3 +91,7 @@ func move_to_marker (_delta):
 	var direction = global_position.direction_to(marker)
 	move(_delta,direction)
 
+
+func _on_body_detector_body_entered(body):
+	if is_multiplayer_authority() && body.get_groups().has("Portals"):
+		NetworkConnection.change_region(self,body.region_to_respawn)

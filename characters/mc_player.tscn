@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqedqwchhy0bd"]
+[gd_scene load_steps=6 format=3 uid="uid://dqedqwchhy0bd"]
 
 [ext_resource type="Script" path="res://characters/mc_player.gd" id="1_18ulx"]
 [ext_resource type="PackedScene" uid="uid://cd3p6n6ddbxds" path="res://assets/characters/CharacterYBotBase/CharacterYBotBase.glb" id="2_dj2sq"]
@@ -14,6 +14,10 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_us8r8"]
+radius = 0.313078
+height = 1.70099
 
 [node name="MCPlayer" type="CharacterBody3D"]
 script = ExtResource("1_18ulx")
@@ -32,3 +36,11 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_8mptq")
+
+[node name="BodyDetector" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.804276, 0)
+shape = SubResource("CapsuleShape3D_us8r8")
+
+[connection signal="body_entered" from="BodyDetector" to="." method="_on_body_detector_body_entered"]

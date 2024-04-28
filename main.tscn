@@ -11,6 +11,3 @@ script = ExtResource("1_oy6uy")
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://world/region_001.tscn", "res://world/region_002.tscn")
 spawn_path = NodePath("..")
-
-[connection signal="connected" from="MultiplayerUI" to="." method="_on_multiplayer_ui_connected"]
-[connection signal="disconnected" from="MultiplayerUI" to="." method="_on_multiplayer_ui_disconnected"]

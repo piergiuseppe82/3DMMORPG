@@ -1,31 +1,14 @@
 extends Control
 
-const PORT = 1382
-const HOST = "127.0.0.1"
-
-signal connected(id : int) 
-signal disconnected(id : int) 
-var peer = ENetMultiplayerPeer.new()
-
 func _on_host_btn_pressed():
-	var error = peer.create_server(PORT,2)
-	if error != OK:
-		OS.alert("Error on server creation: " +error)
-		return
-	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
-	multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(_add_player)
-	multiplayer.peer_disconnected.connect(_rem_player)
+	NetworkConnection.create_server()
 	hide()
 
 func _on_client_btn_pressed():
-	peer.create_client(HOST,PORT)
-	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
-	multiplayer.multiplayer_peer = peer
+	NetworkConnection.create_client()
 	hide()
 
-func _add_player(id = 1):
-	emit_signal("connected",id)
 
-func _rem_player(id = 1):
-	emit_signal("disconnected",id)
+func _on_host_2_btn_pressed():
+	NetworkConnection.create_server("region_002")
+	hide()
