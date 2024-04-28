@@ -4,6 +4,7 @@ const PORT = 1382
 const HOST = "127.0.0.1"
 
 signal connected(id : int) 
+signal disconnected(id : int) 
 var peer = ENetMultiplayerPeer.new()
 
 func _on_host_btn_pressed():
@@ -14,9 +15,8 @@ func _on_host_btn_pressed():
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(_add_player)
-	emit_signal("connected",1)
+	multiplayer.peer_disconnected.connect(_rem_player)
 	hide()
-
 
 func _on_client_btn_pressed():
 	peer.create_client(HOST,PORT)
@@ -26,3 +26,6 @@ func _on_client_btn_pressed():
 
 func _add_player(id = 1):
 	emit_signal("connected",id)
+
+func _rem_player(id = 1):
+	emit_signal("disconnected",id)
