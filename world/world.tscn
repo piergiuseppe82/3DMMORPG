@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://nyfbywp5445u"]
-
-[ext_resource type="PackedScene" uid="uid://b5ciyemf8iuyr" path="res://world/regions/region_001.tscn" id="1_x6mqv"]
-
-[node name="World" type="Node3D"]
-
-[node name="Region001" parent="." instance=ExtResource("1_x6mqv")]

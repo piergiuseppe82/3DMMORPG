@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5ciyemf8iuyr"]
+[gd_scene load_steps=4 format=3 uid="uid://b5ciyemf8iuyr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7bw1q"]
 size = Vector3(11.8027, 0.787354, 36.2383)
 
 [sub_resource type="BoxMesh" id="BoxMesh_w1agi"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o2i8y"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Region001" type="Node3D"]
 
@@ -20,3 +28,10 @@ mesh = SubResource("BoxMesh_w1agi")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.986527, 0.113575, -0.117754, 0, 0.719764, 0.694219, 0.163601, -0.684865, 0.710066, -1.15796, 4.11384, 5.19387)
 shadow_enabled = true
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://characters/mc_player.tscn")
+spawn_path = NodePath("..")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_o2i8y")

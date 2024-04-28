@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://2aqp6djosngw"]
+[gd_scene load_steps=3 format=3 uid="uid://2aqp6djosngw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_oy6uy"]
 [ext_resource type="PackedScene" uid="uid://x1u1y5ljcm1" path="res://ui/multiplayer_ui.tscn" id="2_6bkqc"]
-[ext_resource type="PackedScene" uid="uid://nyfbywp5445u" path="res://world/world.tscn" id="3_bdk0q"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_oy6uy")
@@ -10,9 +9,7 @@ script = ExtResource("1_oy6uy")
 [node name="MultiplayerUI" parent="." instance=ExtResource("2_6bkqc")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://world/world.tscn", "res://characters/mc_player.tscn")
+_spawnable_scenes = PackedStringArray("res://world/region_001.tscn")
 spawn_path = NodePath("..")
-
-[node name="World" parent="." instance=ExtResource("3_bdk0q")]
 
 [connection signal="connected" from="MultiplayerUI" to="." method="_on_multiplayer_ui_connected"]
