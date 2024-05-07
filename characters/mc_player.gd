@@ -14,8 +14,12 @@ var ball_scene = preload("res://test_utility/Ball.tscn")
 
 var marker
 
+func _ready():
+	$Inventory.hide()
+
 func _enter_tree():
-	set_multiplayer_authority(name.to_int())
+	set_multiplayer_authority(name.to_int())	
+	$Character/AnimationPlayer.play("idle")	
 	
 func idle(_delta):
 	velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -59,7 +63,7 @@ func _set_positon_and_animation_state(state,_velocity):
 func _input(event):
 	if is_multiplayer_authority() && event.is_action("right_click") and event.pressed:
 		#shoot_ball()	
-		if get_right_click_position().has("position"):
+		if !$Inventory.visible && get_right_click_position().has("position"):
 			marker = get_right_click_position()["position"]			
 	
 #ONLY FOR TEST POSITION OF MOUSE

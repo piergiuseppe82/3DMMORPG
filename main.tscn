@@ -7,6 +7,10 @@
 script = ExtResource("1_oy6uy")
 
 [node name="MultiplayerUI" parent="." instance=ExtResource("2_6bkqc")]
+offset_left = 64.0
+offset_top = 10.0
+offset_right = 64.0
+offset_bottom = 10.0
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://world/region_001.tscn", "res://world/region_002.tscn")

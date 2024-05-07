@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dcnuk88wad0qe"]
 
-[ext_resource type="PackedScene" uid="uid://df6s1kyrw5oer" path="res://assets/building/cavern.glb" id="1_djuf7"]
+[ext_resource type="PackedScene" uid="uid://ccloe6be3e2qg" path="res://assets/building/cavern.glb" id="1_djuf7"]
 [ext_resource type="Script" path="res://world/portals/cavern_body_3d.gd" id="1_phl42"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xf80w"]

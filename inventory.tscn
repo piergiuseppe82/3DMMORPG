@@ -1,0 +1,635 @@
+[gd_scene load_steps=7 format=3 uid="uid://das8ek3nkfkem"]
+
+[ext_resource type="Theme" uid="uid://fmastujy6fnb" path="res://themes/win_theme_1.tres" id="1_0oj8m"]
+[ext_resource type="Texture2D" uid="uid://dps82r8sd2hre" path="res://themes/textures/button_gray_pressed.png" id="2_6a20y"]
+[ext_resource type="Script" path="res://inventory.gd" id="2_kbx0w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mykv2"]
+texture = ExtResource("2_6a20y")
+
+[sub_resource type="Environment" id="Environment_20bos"]
+
+[sub_resource type="World3D" id="World3D_si13a"]
+environment = SubResource("Environment_20bos")
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 74.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.96, 0.971723)
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("1_0oj8m")
+script = ExtResource("2_kbx0w")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -587.0
+offset_top = -536.0
+offset_bottom = 536.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.998158, 0.998343)
+theme = ExtResource("1_0oj8m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Test Label"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/GridContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/GridContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Helmet"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/GridContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/GridContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+text = "Chest"
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/GridContainer/PanelContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/GridContainer/PanelContainer3/MarginContainer"]
+layout_mode = 2
+text = "Pants"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2/SubViewportContainer"]
+world_3d = SubResource("World3D_si13a")
+handle_input_locally = false
+size = Vector2i(180, 280)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2/SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.999999, 0, -0.0014661, 0, 1, 0, 0.0014661, 0, -0.999999, -0.00460076, 0.912644, -1.57529)
+fov = 70.9504
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2/SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.472997, 0, -0.881064, 0, 1, 0, 0.881064, 0, -0.472997, 0, 0, 0)
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/GridContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/GridContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Cap"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/GridContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/GridContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+text = "Glove"
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/GridContainer/PanelContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/GridContainer/PanelContainer3/MarginContainer"]
+layout_mode = 2
+text = "Shoes"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer"]
+layout_mode = 2
+columns = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/GridContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/GridContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Food"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/GridContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/GridContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+text = "One Hand"
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/GridContainer/PanelContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/GridContainer/PanelContainer3/MarginContainer"]
+layout_mode = 2
+text = "Off Hand"
+
+[node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/GridContainer/PanelContainer4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/PanelContainer/GridContainer/PanelContainer4/MarginContainer"]
+layout_mode = 2
+text = "Poison"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/PanelContainer2"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer3/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer4/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer5" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer5"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer5/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer6" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer6"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer6/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer7" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer7"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer7/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer8" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer8"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer8/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer9" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer9"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer9/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer10" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer10"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer10/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer11" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer11"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer11/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer12" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer12"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer12/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer13" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer13"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer13/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer14" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer14"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer14/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer15" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer15"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer15/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer16" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer16"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer16/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer17" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer17"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer17/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer18" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer18"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer18/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer19" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer19"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer19/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer20" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer20"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer20/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer21" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer21"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer21/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer22" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer22"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer22/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer23" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer23"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer23/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer24" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer24"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer24/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer25" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer25"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer25/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer26" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer26"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer26/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer27" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer27"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer27/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer28" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer28"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer28/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer29" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer29"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer29/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer30" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer30"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer30/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer31" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer31"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer31/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="PanelContainer32" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mykv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer32"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer2/GridContainer/PanelContainer32/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+alignment = 1
+
+[node name="BtnClose" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Close
+"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/BtnClose" to="." method="_on_btn_close_pressed"]

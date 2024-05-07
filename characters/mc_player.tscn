@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqedqwchhy0bd"]
+[gd_scene load_steps=7 format=3 uid="uid://dqedqwchhy0bd"]
 
 [ext_resource type="Script" path="res://characters/mc_player.gd" id="1_18ulx"]
 [ext_resource type="PackedScene" uid="uid://cd3p6n6ddbxds" path="res://assets/characters/CharacterYBotBase/CharacterYBotBase.glb" id="2_dj2sq"]
+[ext_resource type="PackedScene" uid="uid://das8ek3nkfkem" path="res://inventory.tscn" id="3_54r3q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_02ddt"]
 radius = 0.21477
@@ -42,5 +43,7 @@ replication_config = SubResource("SceneReplicationConfig_8mptq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BodyDetector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.804276, 0)
 shape = SubResource("CapsuleShape3D_us8r8")
+
+[node name="Inventory" parent="." instance=ExtResource("3_54r3q")]
 
 [connection signal="body_entered" from="BodyDetector" to="." method="_on_body_detector_body_entered"]
