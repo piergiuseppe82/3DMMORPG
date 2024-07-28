@@ -14,6 +14,8 @@ var ball_scene = preload("res://test_utility/Ball.tscn")
 
 var marker
 
+var obstacle = false
+
 func _ready():
 	$Inventory.hide()
 
@@ -43,6 +45,9 @@ func _physics_process(delta):
 		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
 			move(delta,direction)
+		elif obstacle:		
+			obstacle = false	
+			idle(delta)
 		elif marker:
 			move_to_marker(delta)
 		else:
@@ -63,7 +68,7 @@ func _set_positon_and_animation_state(state,_velocity):
 func _input(event):
 	if is_multiplayer_authority() && event.is_action("right_click") and event.pressed:
 		#shoot_ball()	
-		if !$Inventory.visible && get_right_click_position().has("position"):
+		if !$Inventory.visible && get_right_click_position().has("position") && !get_right_click_position()["collider"].get_groups().has("Obstacle"):
 			marker = get_right_click_position()["position"]			
 	
 #ONLY FOR TEST POSITION OF MOUSE
@@ -97,5 +102,9 @@ func move_to_marker (_delta):
 
 
 func _on_body_detector_body_entered(body):
-	if is_multiplayer_authority() && body.get_groups().has("Portals"):
-		NetworkConnection.change_region(self,body.region_to_respawn)
+	if is_multiplayer_authority():
+		if body.get_groups().has("Portals"):
+			NetworkConnection.change_region(self,body.region_to_respawn)
+		if body.get_groups().has("Obstacle"):
+			obstacle = true
+			marker = null

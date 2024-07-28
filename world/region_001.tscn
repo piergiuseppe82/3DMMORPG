@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5ciyemf8iuyr"]
+[gd_scene load_steps=7 format=3 uid="uid://b5ciyemf8iuyr"]
 
 [ext_resource type="PackedScene" uid="uid://dcnuk88wad0qe" path="res://world/portals/cavern_body_3d.tscn" id="1_js0tc"]
+[ext_resource type="PackedScene" uid="uid://dhqhsno14c4pg" path="res://world/rocks/coal_body.tscn" id="2_055oy"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o2i8y"]
 properties/0/path = NodePath(".:position")
@@ -43,3 +44,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bm8wg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 shape = SubResource("BoxShape3D_jtv4b")
+
+[node name="CoalBody" parent="." instance=ExtResource("2_055oy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.59968, 0, 0)

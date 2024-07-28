@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhqhsno14c4pg"]
+
+[ext_resource type="PackedScene" uid="uid://covvfckou26bi" path="res://assets/building/coal.glb" id="1_w3wpv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lyemi"]
+size = Vector3(0.463774, 0.403748, 0.493158)
+
+[node name="CoalBody" type="StaticBody3D" groups=["Obstacle"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0302836, 0.216888, 0.0165259)
+shape = SubResource("BoxShape3D_lyemi")
+
+[node name="coal" parent="." instance=ExtResource("1_w3wpv")]
