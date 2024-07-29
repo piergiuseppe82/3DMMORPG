@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cww2ryesa1d1m"]
+
+[ext_resource type="PackedScene" uid="uid://cy6ibavotg17n" path="res://assets/tools/pickaxe.glb" id="1_3iwhl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5i1q1"]
+size = Vector3(5.70569, 0.490005, 23.4099)
+
+[node name="pickaxe" instance=ExtResource("1_3iwhl")]
+
+[node name="CollisionShape3D" parent="handler/StaticBody3D" index="0"]
+transform = Transform3D(0.996965, 0, 0, 0, 0.996965, 0, 0, 0, 0.996965, 0.196838, 0.774131, 1.95212)
+shape = SubResource("BoxShape3D_5i1q1")

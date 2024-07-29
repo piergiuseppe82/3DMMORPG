@@ -1,14 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhqhsno14c4pg"]
+[gd_scene load_steps=5 format=3 uid="uid://dhqhsno14c4pg"]
 
+[ext_resource type="Script" path="res://world/rocks/coal_body.gd" id="1_br1pm"]
 [ext_resource type="PackedScene" uid="uid://covvfckou26bi" path="res://assets/building/coal.glb" id="1_w3wpv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lyemi"]
 size = Vector3(0.463774, 0.403748, 0.493158)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cd2v2"]
+size = Vector3(0.479736, 0.432861, 0.515869)
+
 [node name="CoalBody" type="StaticBody3D" groups=["Obstacle"]]
+script = ExtResource("1_br1pm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0302836, 0.216888, 0.0165259)
 shape = SubResource("BoxShape3D_lyemi")
 
 [node name="coal" parent="." instance=ExtResource("1_w3wpv")]
+
+[node name="BodyDetector" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyDetector"]
+transform = Transform3D(1.00199, 0, 0, 0, 1.00199, 0, 0, 0, 1.00199, 0.0343018, 0.219849, 0.0142822)
+shape = SubResource("BoxShape3D_cd2v2")
+
+[connection signal="body_entered" from="BodyDetector" to="." method="_on_body_detector_body_entered"]

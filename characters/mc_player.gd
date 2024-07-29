@@ -14,6 +14,8 @@ var ball_scene = preload("res://test_utility/Ball.tscn")
 
 var marker
 
+var fire = false
+
 var obstacle = false
 
 func _ready():
@@ -26,13 +28,25 @@ func _enter_tree():
 func idle(_delta):
 	velocity.x = move_toward(velocity.x, 0, SPEED)
 	velocity.z = move_toward(velocity.z, 0, SPEED)
-	$Character/AnimationPlayer.play("idle")	
+	$Character/Armature/Skeleton3D/FirstHandAttach/pickaxe.visible = false
+	$Character/Armature/Skeleton3D/FirstHandAttach/pickaxe.process_mode = Node.PROCESS_MODE_DISABLED
+	$Character/AnimationPlayer.play("idle")		
 	rpc("_set_positon_and_animation_state", "idle",velocity)
+
+func mining(_delta):
+	velocity.x = move_toward(velocity.x, 0, SPEED)
+	velocity.z = move_toward(velocity.z, 0, SPEED)
+	$Character/AnimationPlayer.play("mining")	
+	$Character/Armature/Skeleton3D/FirstHandAttach/pickaxe.visible = true
+	$Character/Armature/Skeleton3D/FirstHandAttach/pickaxe.process_mode = Node.PROCESS_MODE_ALWAYS
+	rpc("_set_positon_and_animation_state", "mining",velocity)
 
 func move(_delta,direction):
 	velocity.x = direction.x * SPEED
 	velocity.z = direction.z * SPEED
 	$Character/Armature.rotation.y = lerp_angle($Character/Armature.rotation.y, atan2(-velocity.x,-velocity.z),LERP_VAL)
+	$Character/Armature/Skeleton3D/FirstHandAttach/pickaxe.visible = false
+	$Character/Armature/Skeleton3D/FirstHandAttach/pickaxe.process_mode = Node.PROCESS_MODE_DISABLED
 	$Character/AnimationPlayer.play("run")	
 	rpc("_set_positon_and_animation_state", "run",velocity)
 
@@ -50,6 +64,8 @@ func _physics_process(delta):
 			idle(delta)
 		elif marker:
 			move_to_marker(delta)
+		elif fire:
+			mining(delta)
 		else:
 			idle(delta)
 	move_and_slide()
@@ -64,12 +80,21 @@ func _set_positon_and_animation_state(state,_velocity):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	$Character/AnimationPlayer.play(state)	
-
+	if("mining" == state):
+		$Character/Armature/Skeleton3D/FirstHandAttach/pickaxe.visible = true
+	else:
+		$Character/Armature/Skeleton3D/FirstHandAttach/pickaxe.visible = false
 func _input(event):
 	if is_multiplayer_authority() && event.is_action("right_click") and event.pressed:
 		#shoot_ball()	
 		if !$Inventory.visible && get_right_click_position().has("position") && !get_right_click_position()["collider"].get_groups().has("Obstacle"):
-			marker = get_right_click_position()["position"]			
+			marker = get_right_click_position()["position"]	
+			fire = false
+	if is_multiplayer_authority() && event.is_action("left_click") and event.pressed:
+		#shoot_ball()	
+		if !$Inventory.visible && get_right_click_position().has("position") && get_right_click_position()["collider"].get_groups().has("Obstacle"):
+			marker = get_right_click_position()["position"]		
+			fire = true
 	
 #ONLY FOR TEST POSITION OF MOUSE
 func shoot_ball(): 

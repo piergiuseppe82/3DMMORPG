@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dqedqwchhy0bd"]
 
 [ext_resource type="Script" path="res://characters/mc_player.gd" id="1_18ulx"]
-[ext_resource type="PackedScene" uid="uid://cd3p6n6ddbxds" path="res://assets/characters/CharacterYBotBase/CharacterYBotBase.glb" id="2_dj2sq"]
 [ext_resource type="PackedScene" uid="uid://das8ek3nkfkem" path="res://inventory.tscn" id="3_54r3q"]
+[ext_resource type="PackedScene" uid="uid://3dd6uy0sm40j" path="res://characters/character_y_bot_base.tscn" id="3_x8xkl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_02ddt"]
 radius = 0.21477
@@ -32,9 +32,6 @@ transform = Transform3D(1, 0, 0, 0, 0.576432, 0.817145, 0, -0.817145, 0.576432, 
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 
-[node name="Character" parent="." instance=ExtResource("2_dj2sq")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_8mptq")
 
@@ -45,5 +42,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.804276, 0)
 shape = SubResource("CapsuleShape3D_us8r8")
 
 [node name="Inventory" parent="." instance=ExtResource("3_54r3q")]
+
+[node name="Character" parent="." instance=ExtResource("3_x8xkl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.00241435, 0, 0.00471807)
 
 [connection signal="body_entered" from="BodyDetector" to="." method="_on_body_detector_body_entered"]
