@@ -23,5 +23,3 @@ func _on_body_detector_body_entered(body):
 @rpc("any_peer")
 func _set_remote(remoteLife):
 	life = remoteLife
-	if(life <= 0):
-		queue_free()
