@@ -16,6 +16,8 @@ var marker
 
 var fire = false
 
+var fired_marker
+
 var obstacle = false
 
 func _ready():
@@ -64,7 +66,7 @@ func _physics_process(delta):
 			idle(delta)
 		elif marker:
 			move_to_marker(delta)
-		elif fire:
+		elif fire and is_instance_valid(fired_marker["collider"]):
 			mining(delta)
 		else:
 			idle(delta)
@@ -93,8 +95,9 @@ func _input(event):
 	if is_multiplayer_authority() && event.is_action("left_click") and event.pressed:
 		#shoot_ball()	
 		if !$Inventory.visible && get_right_click_position().has("position") && get_right_click_position()["collider"].get_groups().has("Obstacle"):
-			marker = get_right_click_position()["position"]		
-			fire = true
+			fired_marker = get_right_click_position()
+			marker = fired_marker["position"]		
+			fire = true			
 	
 #ONLY FOR TEST POSITION OF MOUSE
 func shoot_ball(): 
