@@ -1,5 +1,7 @@
 extends Control
 
+class_name Inventory
+
 
 
 func _input(_event):
@@ -9,3 +11,6 @@ func _input(_event):
 
 func _on_btn_close_pressed():
 	visible = false
+
+func _put_in_iventory(obj):
+	print("PUT "+obj)

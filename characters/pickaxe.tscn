@@ -1,14 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://cww2ryesa1d1m"]
+[gd_scene load_steps=5 format=3 uid="uid://cww2ryesa1d1m"]
 
 [ext_resource type="PackedScene" uid="uid://cy6ibavotg17n" path="res://assets/tools/pickaxe.glb" id="1_3iwhl"]
+[ext_resource type="Script" path="res://characters/pickaxe.gd" id="2_nn32i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5i1q1"]
 size = Vector3(5.70569, 0.490005, 23.4099)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_h3rp6"]
+size = Vector3(0.252686, 0.188965, 0.439697)
+
 [node name="pickaxe" instance=ExtResource("1_3iwhl")]
+script = ExtResource("2_nn32i")
 
 [node name="StaticBody3D" parent="handler" index="1" groups=["Tools"]]
 
 [node name="CollisionShape3D" parent="handler/StaticBody3D" index="0"]
 transform = Transform3D(0.996965, 0, 0, 0, 0.996965, 0, 0, 0, 0.996965, 0.196838, 0.774131, 1.95212)
 shape = SubResource("BoxShape3D_5i1q1")
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.919766, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0206299, 0.0241699, 0.251343)
+shape = SubResource("BoxShape3D_h3rp6")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

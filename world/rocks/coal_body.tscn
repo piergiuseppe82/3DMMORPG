@@ -9,7 +9,7 @@ size = Vector3(0.463774, 0.403748, 0.493158)
 [sub_resource type="BoxShape3D" id="BoxShape3D_cd2v2"]
 size = Vector3(0.479736, 0.432861, 0.515869)
 
-[node name="CoalBody" type="StaticBody3D" groups=["Obstacle"]]
+[node name="CoalBody" type="StaticBody3D" groups=["Coal", "Obstacle"]]
 script = ExtResource("1_br1pm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
