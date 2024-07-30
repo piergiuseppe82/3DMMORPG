@@ -25,7 +25,7 @@ transform = Transform3D(0.986527, 0.113575, -0.117754, 0, 0.719764, 0.694219, 0.
 shadow_enabled = true
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://characters/mc_player.tscn")
+_spawnable_scenes = PackedStringArray("res://characters/mc_player.tscn", "res://world/rocks/coal_body.tscn")
 spawn_path = NodePath("..")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

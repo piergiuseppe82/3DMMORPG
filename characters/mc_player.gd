@@ -70,7 +70,7 @@ func _physics_process(delta):
 			idle(delta)
 	move_and_slide()
 
-@rpc("unreliable")
+@rpc("any_peer")
 func _set_positon_and_animation_state(state,_velocity):
 	if	_velocity:
 		velocity.x = _velocity.x * SPEED

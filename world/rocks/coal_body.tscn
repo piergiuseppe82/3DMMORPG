@@ -24,4 +24,6 @@ shape = SubResource("BoxShape3D_lyemi")
 transform = Transform3D(1.00199, 0, 0, 0, 1.00199, 0, 0, 0, 1.00199, 0.0343018, 0.219849, 0.0142822)
 shape = SubResource("BoxShape3D_cd2v2")
 
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+
 [connection signal="body_entered" from="BodyDetector" to="." method="_on_body_detector_body_entered"]
